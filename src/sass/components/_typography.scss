@@ -1,0 +1,93 @@
+$main-font: 'Roboto', sans-serif;
+//$secondary-font: TBD;
+
+$text-color: #333;
+
+body { 
+    font-size: 16px; 
+    font-family: $main-font;
+    line-height: 1.62;
+    font-weight: 400;
+    color: $text-color;
+    padding: 0;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+p { }
+p > a { text-decoration: none; @include transition; cursor: pointer; }
+p > a:hover { 
+	text-decoration: underline; // default, to be changed for specific elements
+} 
+    
+a {
+    text-decoration: none;
+    color: currentColor;
+  	@include transition;
+  	cursor: pointer;
+    
+    &:hover {
+        text-decoration: underline;
+        background-color: transparent;
+        color: currentColor;
+    }
+}
+
+// Setting Font Sizes for Headers
+
+h1 {
+	// font-family: $secondary-font;
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+h2 {
+	// font-family: $secondary-font;
+    font-size: 1.6rem;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+h3 {
+	// font-family: $secondary-font;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+h4 {
+	// font-family: $secondary-font;
+    font-size: 1.2rem;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+h5 {
+	// font-family: $secondary-font;
+    font-size: 1rem;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+h6 {
+	// font-family: $secondary-font;
+    font-size: 1rem;
+    font-weight: 300;
+    text-transform: capitalize;
+}
+
+hr {
+    border-width: 0;
+    margin: 20px 0;
+    border-top: 1px solid rgba($black, .1);
+}
+
+figure {
+    margin: 0;
+}
+
+figcaption {
+    text-align: center;
+    font-size: .9rem;
+    font-style: italic;
+}
