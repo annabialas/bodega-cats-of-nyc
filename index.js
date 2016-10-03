@@ -3,6 +3,23 @@ var hbs = require('express-handlebars');
 
 var app = express();
 
+var Mongoose = require('mongoose');
+
+require('dotenv').config();
+
+Mongoose.connect(process.env.DB_URL);
+
+var Cat = require('./models/cat.js');
+
+var tabby = new Cat({
+	name: "Tabby"
+});
+
+tabby.save(function(err){
+	if (err) console.log('error saving');
+	else console.log('saved successfully');
+});
+
 var myData = {
 	"cats" : [	
 		{"name": "Billy"},
