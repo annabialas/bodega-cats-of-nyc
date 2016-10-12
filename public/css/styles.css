@@ -1,6 +1,7 @@
 body {
   padding: 0;
-  margin: 0; }
+  margin: 0;
+  height: 100%; }
 
 body {
   font-size: 16px;
@@ -34,59 +35,72 @@ a {
 
 h1 {
   font-size: 2rem;
-  font-weight: 300; }
+  font-weight: 400;
+  margin: 0; }
 
 h2 {
   font-size: 1.6rem;
-  font-weight: 300;
-  text-transform: uppercase; }
+  font-weight: 400;
+  text-transform: uppercase;
+  margin: 0; }
 
 h3 {
   font-size: 1.4rem;
   font-weight: 700;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  margin: 0; }
 
 h4 {
   font-size: 1.2rem;
   font-weight: 400;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  margin: 0; }
 
 h5 {
   font-size: 1rem;
-  font-weight: 400;
-  text-transform: uppercase; }
+  font-weight: 500;
+  text-transform: capitalize;
+  margin: 0; }
 
 h6 {
   font-size: 1rem;
-  font-weight: 300;
-  text-transform: capitalize; }
+  font-weight: 400;
+  text-transform: capitalize;
+  margin: 0; }
 
 hr {
   border-width: 0;
   margin: 20px 0;
   border-top: 1px solid rgba(0, 0, 0, 0.1); }
 
-figure {
-  margin: 0; }
+.top-nav {
+  height: 50px;
+  margin: 0px 30px 0px 30px; }
+  .top-nav .row, .top-nav .columns {
+    padding: 0; }
+  .top-nav__logo {
+    font-style: italic;
+    line-height: 50px;
+    vertical-align: middle; }
+  .top-nav__menu {
+    line-height: 50px;
+    vertical-align: middle; }
+  .top-nav__menu-item {
+    text-align: right;
+    line-height: 50px;
+    vertical-align: middle; }
 
-figcaption {
-  text-align: center;
-  font-size: .9rem;
-  font-style: italic; }
-
-p {
-  color: red; }
-
-html {
+.map {
   position: absolute;
-  top: 0;
+  top: 50px;
   bottom: 0;
   width: 100%; }
-
-body {
-  padding: 0;
-  margin: 0;
-  height: 100%; }
+  .map__wrapper {
+    padding: 0;
+    margin: 0;
+    height: 100%; }
 
 #map {
+  margin: 0;
+  padding: 0;
   height: 100%; }

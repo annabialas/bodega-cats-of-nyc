@@ -1,34 +1,30 @@
 var express = require('express');
 var hbs = require('express-handlebars');
+var Mongoose = require('mongoose');
 
 var app = express();
-
-var Mongoose = require('mongoose');
 
 require('dotenv').config();
 
 Mongoose.connect(process.env.DB_URL);
 
-var Cat = require('./models/cat.js');
+var Cat = require('./models/cat');
 
-var tabby = new Cat({
-	name: "Tabby"
-});
+// var input = new Cat({ });
 
-tabby.save(function(err){
-	if (err) console.log('error saving');
-	else console.log('saved successfully');
-});
+// input.save(function(err){
+// 	if (err) console.log('error saving');
+// 	else console.log('saved successfully');
+// });
 
-var myData = {
-	"cats" : [	
-		{"name": "Billy"},
-		{"name": "Koshka"}
-	]
-};
+// var myData = {
+// 	"cats" : [	
+// 		{ },
+// 		{ }
+// 	]
+// };
 
 var portNum = 8080;
-
 app.set('port', portNum);
 
 // tell express to use handlebars
@@ -37,9 +33,22 @@ app.engine('handlebars', hbs({defaultLayout: 'base'}));
 app.set('view engine', 'handlebars');
 
 app.get('/', function(req, res){
-	res.locals.title = 'Home';
-	res.render('index', myData);
+	res.locals.title = 'Bodega Cats';
+	res.render('index');
 });
+
+app.get('/about', function(req, res){
+	res.locals.title = 'Bodega Cats | About';
+	res.render('about');
+});
+
+app.get('/submit', function(req, res){
+	res.locals.title = 'Bodega Cats | Submit A Cat';
+	res.render('submit');
+});
+
+var api = require('./routes/api');
+app.use('./api', api);
 
 app.use(express.static('public'));
 

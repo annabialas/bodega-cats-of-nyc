@@ -7,17 +7,25 @@
      -webkit-transition: all .4s ease;
 }
 
+// top-nav properties for other components to rely on
+
+$top-nav-height: 50px; 
+
 // colors
 
 $black: #000;
 $white: #FFF;
 
-$yellow: #FFF000;
-$dark-blue: #2C2C54;
+// $main-color: TBD
+// $primary-accent-color: TBD
+// $secondary-accent-color: TBD
 
-$main-color: $white;
-$primary-accent-color: $yellow;
-$secondary-accent-color: $dark-blue;
+// *maybe* accent colors
+
+// $yellow: #FFF000;
+// $dark-blue: #2C2C54;
+
+// grayscale tones
 
 $gray-10: rgba($black, .1);
 $gray-20: rgba($black, .2);
@@ -39,8 +47,10 @@ $white-70: rgba($white, .7);
 $white-80: rgba($white, .8);
 $white-90: rgba($white, .9);
 
-$yellow-20k: darken($yellow, 4);
-$yellow-40k: darken($yellow, 6);
+// *if* they become accent colors
 
-$dark-blue-20k: darken($dark-blue, 4);
-$dark-blue-40k: darken($dark-blue, 6);
+// $yellow-20k: darken($yellow, 4);
+// $yellow-40k: darken($yellow, 6);
+
+// $dark-blue-20k: darken($dark-blue, 4);
+// $dark-blue-40k: darken($dark-blue, 6);

@@ -1,0 +1,28 @@
+.top-nav {
+
+	height: $top-nav-height;
+	margin: 0px 30px 0px 30px;
+
+	.row, .columns { padding: 0; }
+
+	&__logo {
+
+		font-style: italic;
+		line-height: $top-nav-height;
+		vertical-align: middle;
+
+	}
+
+	&__menu { 
+
+		line-height: $top-nav-height;
+		vertical-align: middle;
+	}
+
+	&__menu-item {
+
+		text-align: right;
+		line-height: $top-nav-height;
+		vertical-align: middle;
+	}
+}

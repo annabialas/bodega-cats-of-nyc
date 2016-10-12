@@ -38,14 +38,16 @@ a {
 h1 {
 	// font-family: $secondary-font;
     font-size: 2rem;
-    font-weight: 300;
+    font-weight: 400;
+    margin: 0;
 }
 
 h2 {
 	// font-family: $secondary-font;
     font-size: 1.6rem;
-    font-weight: 300;
+    font-weight: 400;
     text-transform: uppercase;
+    margin: 0;
 }
 
 h3 {
@@ -53,6 +55,7 @@ h3 {
     font-size: 1.4rem;
     font-weight: 700;
     text-transform: uppercase;
+    margin: 0;
 }
 
 h4 {
@@ -60,34 +63,29 @@ h4 {
     font-size: 1.2rem;
     font-weight: 400;
     text-transform: uppercase;
+    margin: 0;
 }
 
 h5 {
 	// font-family: $secondary-font;
     font-size: 1rem;
-    font-weight: 400;
-    text-transform: uppercase;
+    font-weight: 500;
+    text-transform: capitalize;
+    margin: 0;
 }
 
 h6 {
 	// font-family: $secondary-font;
     font-size: 1rem;
-    font-weight: 300;
+    font-weight: 400;
     text-transform: capitalize;
+    margin: 0;
 }
+
+// <hr>
 
 hr {
     border-width: 0;
     margin: 20px 0;
     border-top: 1px solid rgba($black, .1);
-}
-
-figure {
-    margin: 0;
-}
-
-figcaption {
-    text-align: center;
-    font-size: .9rem;
-    font-style: italic;
 }
