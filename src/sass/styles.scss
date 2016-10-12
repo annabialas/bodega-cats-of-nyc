@@ -6,6 +6,8 @@
 @import 'components/typography';
 @import 'components/top-nav';
 @import 'components/map';
+@import 'components/form';
 
 // custom pages
-//@import 'index';
+@import 'about';
+@import 'submit';
