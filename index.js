@@ -32,21 +32,6 @@ app.set('port', portNum);
 app.engine('handlebars', hbs({defaultLayout: 'base'}));
 app.set('view engine', 'handlebars');
 
-// app.get('/', function(req, res){
-// 	res.locals.title = 'Bodega Cats';
-// 	res.render('index');
-// });
-
-// app.get('/about', function(req, res){
-// 	res.locals.title = 'Bodega Cats | About';
-// 	res.render('about');
-// });
-
-// app.get('/submit', function(req, res){
-// 	res.locals.title = 'Bodega Cats | Submit A Cat';
-// 	res.render('submit');
-// });
-
 var apiRoutes = require('./routes/api');
 app.use('/', apiRoutes);
 

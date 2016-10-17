@@ -5,22 +5,45 @@
 </div>
 
 <script>
-	// Mapbox Public Access Token
-	L.mapbox.accessToken = 'pk.eyJ1IjoiYW5uYWJpYWxhcyIsImEiOiJjaWh3bzVybjUwMm92dGZraHFwcnY4bG16In0.j2Sl8c2UoLY_yHBjO1vAfQ'; 
-	var map = L.mapbox.map('map', 'mapbox.light', {
-			// attributionControl: false,
-			// zoomControl: false
-		}) 
-		.setView([40.745, -73.985], 12);
 
-	// var attribution = L.control.attribution();
-	// 	 attribution.setPrefix('By <a href="https://www.github.com/annabialas" class="mapbox-improve-map">Anna Bialas</a>');
-	// 	attribution.addAttribution('Powered by &copy; <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <a href="http://mapbox.com/map-feedback/" class="mapbox-improve-map">Improve this map</a>');
-	// attribution.addTo(map);
+	mapboxgl.accessToken = 'pk.eyJ1IjoiYW5uYWJpYWxhcyIsImEiOiJjaWh3bzVybjUwMm92dGZraHFwcnY4bG16In0.j2Sl8c2UoLY_yHBjO1vAfQ';
+		var map = new mapboxgl.Map({
+		    container: 'map',
+		    style: 'mapbox://styles/mapbox/streets-v9',
+		    center: [-73.985, 40.745],
+		    zoom: 12
+		});
 
-	// var zoom = L.control.zoom();
-	// 	zoom.setPosition('bottomleft');
-	// zoom.addTo(map);
-	
-	map.scrollWheelZoom.disable();
+	map.addControl(new mapboxgl.Geocoder());
+	map.addControl(new mapboxgl.NavigationControl());
+
+	// Geolocation via https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation#Prompting_for_permission :
+
+	function locateMe() { 
+
+		if (!navigator.geolocation) {
+    		console.log("Geolocation not supported by browser");
+    		return;
+  		};
+
+		function success(position) {
+
+			var lon = position.coords.longitude;
+			var lat = position.coords.latitude;
+
+			map.flyTo({ 
+				center: [lon, lat],
+				zoom: 15
+			});
+		};
+
+		function error() {
+    		console.log("Geolocation disabled");
+  		};	
+
+		navigator.geolocation.getCurrentPosition(success, error);
+	};
+
+	window.onload = locateMe();
+
 </script>

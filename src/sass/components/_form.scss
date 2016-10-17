@@ -1,0 +1,48 @@
+// Form Reset
+
+input[type="text"] {
+    border: 0;
+}
+
+input:focus,
+button:focus {
+    outline: none;
+}
+
+input[type="text"] {
+    text-align: left;
+    border: 0;
+    background-color: $gray-10;
+    width: 100%;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    @include transition;
+}
+
+input[type="text"]:focus {
+    background-color: $gray-20;
+    border: 0;
+    @include transition;
+}
+
+form,
+.form {
+    padding: 10px 0;
+
+    ::-webkit-input-placeholder {
+        color: $black;
+        text-align: left;
+    }
+    :-moz-placeholder {
+        color: $black;
+        text-align: left;
+    } /* Firefox 18- */
+    ::-moz-placeholder {
+        color: $black;
+        text-align: left;
+    } /* Firefox 19+ */
+    :-ms-input-placeholder {
+        color: $black;
+        text-align: left;
+    }
+}

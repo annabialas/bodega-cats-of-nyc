@@ -3,6 +3,11 @@ body {
   margin: 0;
   height: 100%; }
 
+.page-section {
+  margin-top: 30px;
+  width: 100%;
+  height: 100%; }
+
 body {
   font-size: 16px;
   font-family: "Roboto", sans-serif;
@@ -75,9 +80,7 @@ hr {
 
 .top-nav {
   height: 50px;
-  margin: 0px 30px 0px 30px; }
-  .top-nav .row, .top-nav .columns {
-    padding: 0; }
+  margin: 0px 0px 60px 0px; }
   .top-nav__logo {
     font-style: italic;
     line-height: 50px;
@@ -104,3 +107,51 @@ hr {
   margin: 0;
   padding: 0;
   height: 100%; }
+
+input[type="text"] {
+  border: 0; }
+
+input:focus,
+button:focus {
+  outline: none; }
+
+input[type="text"] {
+  text-align: left;
+  border: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  width: 100%;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  transition: all .4s ease;
+  -webkit-transition: all .4s ease; }
+
+input[type="text"]:focus {
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 0;
+  transition: all .4s ease;
+  -webkit-transition: all .4s ease; }
+
+form,
+.form {
+  padding: 10px 0;
+  /* Firefox 18- */
+  /* Firefox 19+ */ }
+  form ::-webkit-input-placeholder,
+  .form ::-webkit-input-placeholder {
+    color: #000;
+    text-align: left; }
+  form :-moz-placeholder,
+  .form :-moz-placeholder {
+    color: #000;
+    text-align: left; }
+  form ::-moz-placeholder,
+  .form ::-moz-placeholder {
+    color: #000;
+    text-align: left; }
+  form :-ms-input-placeholder,
+  .form :-ms-input-placeholder {
+    color: #000;
+    text-align: left; }
+
+.form-title {
+  text-align: center; }
