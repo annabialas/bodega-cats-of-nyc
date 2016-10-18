@@ -13,10 +13,10 @@ router.get('/about', function(req, res){
 	res.render('about');
 });
 
-router.get('/submit', function(req, res){
-	res.locals.title = 'Bodega Cats | Submit A Cat';
-	res.render('submit');
-});
+// router.get('/submit', function(req, res){
+// 	res.locals.title = 'Bodega Cats | Submit A Cat';
+// 	res.render('submit');
+// });
 
 module.exports = router;
 

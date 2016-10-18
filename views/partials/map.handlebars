@@ -1,6 +1,6 @@
 <div class="map">
 	<div class="map__wrapper">
-		<div id="map"></div>
+		<div id="js-map"></div>
 	</div>
 </div>
 
@@ -8,7 +8,7 @@
 
 	mapboxgl.accessToken = 'pk.eyJ1IjoiYW5uYWJpYWxhcyIsImEiOiJjaWh3bzVybjUwMm92dGZraHFwcnY4bG16In0.j2Sl8c2UoLY_yHBjO1vAfQ';
 		var map = new mapboxgl.Map({
-		    container: 'map',
+		    container: 'js-map',
 		    style: 'mapbox://styles/mapbox/streets-v9',
 		    center: [-73.985, 40.745],
 		    zoom: 12
@@ -19,7 +19,7 @@
 
 	// Geolocation via https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation#Prompting_for_permission :
 
-	function locateMe() { 
+	document.addEventListener("DOMContentLoaded", function locateMe() { 
 
 		if (!navigator.geolocation) {
     		console.log("Geolocation not supported by browser");
@@ -35,6 +35,8 @@
 				center: [lon, lat],
 				zoom: 15
 			});
+
+
 		};
 
 		function error() {
@@ -42,8 +44,8 @@
   		};	
 
 		navigator.geolocation.getCurrentPosition(success, error);
-	};
+	});
 
-	window.onload = locateMe();
+	// window.onload = locateMe();
 
 </script>

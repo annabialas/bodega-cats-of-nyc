@@ -1,5 +1,6 @@
 var express = require('express');
 var hbs = require('express-handlebars');
+var bodyParser = require('body-parser');
 var Mongoose = require('mongoose');
 
 var app = express();
@@ -10,20 +11,6 @@ Mongoose.connect(process.env.DB_URL);
 
 var Cat = require('./models/cat');
 
-// var input = new Cat({ });
-
-// input.save(function(err){
-// 	if (err) console.log('error saving');
-// 	else console.log('saved successfully');
-// });
-
-// var myData = {
-// 	"cats" : [	
-// 		{ },
-// 		{ }
-// 	]
-// };
-
 var portNum = 8080;
 app.set('port', portNum);
 
@@ -32,8 +19,17 @@ app.set('port', portNum);
 app.engine('handlebars', hbs({defaultLayout: 'base'}));
 app.set('view engine', 'handlebars');
 
-var apiRoutes = require('./routes/api');
-app.use('/', apiRoutes);
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+app.use(bodyParser.json());
+
+var renderViews = require('./routes/views');
+app.use('/', renderViews);
+
+var cat = require('./routes/cats');
+app.use('/submit', cat);
 
 app.use(express.static('public'));
 

@@ -11,11 +11,16 @@
 		margin:0;
 		height: 100%;
 
+		// &--loading {
+		// 	// display:none;
+		// 	z-index: 100000000;
+		// }
+
 	}
 
 }
 
-#map { 
+#js-map { 
 		margin: 0;
     	padding: 0;
 		height: 100%; 
