@@ -8,20 +8,42 @@ router.get('/', function(req, res){
 	res.render('submit');
 });
 
-router.post('/', function(req, res){
-	var cat = new Cat({
-		name: req.body.name
-	});
+// router.post('/', function(req, res){
+// 	var cat = new Cat({
+// 		name: req.body.name
+// 	});
 
-	cat.save(function(err, data){
-		if (err){
+// 	cat.save(function(err, data){
+// 		if (err){
+// 			return res.send('error!');
+// 			// return res.redirect(303, '/pets');
+// 		}
+// 		res.send('saved ' + data.name);
+// 		// res.redirect(303, '/pets');
+// 	});
+// });
+
+router.post('/', function(req, res){
+
+	var cat = new Cat({
+    	geometry: { 
+    		coordinates:req.body.coordinates.split(',').map(Number) 
+    	}
+  	});
+
+  	cat.save(function (err, data) { 
+  		if (err){
+  			console.log(err);
 			return res.send('error!');
-			// return res.redirect(303, '/pets');
 		}
-		res.send('saved ' + data.name);
-		// res.redirect(303, '/pets');
-	});
+		// res.send('saved ' + data.geometry.coordinates);
+		res.redirect(303, '/about');
+		console.log(data); 
+  	});
+
+  	// res.redirect('/');
 });
+
 
 // router.get('/', function(req, res){
 

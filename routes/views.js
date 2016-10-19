@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-// var Cat = require('../models/cat');
+var Cat = require('../models/cat');
 
 router.get('/', function(req, res){
 	res.locals.title = 'Bodega Cats';
@@ -10,8 +10,28 @@ router.get('/', function(req, res){
 
 router.get('/about', function(req, res){
 	res.locals.title = 'Bodega Cats | About';
-	res.render('about');
+	// res.render('about');
+
+  	Cat.find({}, function(err, data) {
+
+	  	var geojson = {
+	    	"type": "FeatureCollection",
+	     		"features": data.map(function(item) {
+		        	return {
+		          		"type" : "Feature",
+		          		"geometry" : {"coordinates" : item.geometry.coordinates, "type": "Point"}
+		        	}
+	     		})
+	  	}
+	  	
+  		res.json(geojson);
+  	});
 });
+
+// router.get('/about', function(req, res){
+// 	res.locals.title = 'Bodega Cats | About';
+// 	res.render('about');
+// });
 
 // router.get('/submit', function(req, res){
 // 	res.locals.title = 'Bodega Cats | Submit A Cat';

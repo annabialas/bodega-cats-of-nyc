@@ -17,35 +17,94 @@
 	map.addControl(new mapboxgl.Geocoder());
 	map.addControl(new mapboxgl.NavigationControl());
 
-	// Geolocation via https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation#Prompting_for_permission :
+	map.on('load', function () {
+	    map.addSource("points", {
+	        "type": "geojson",
+	        "data": {
+	            "type": "FeatureCollection",
+	            "features": [{
+	                "type": "Feature",
+	                "geometry": {
+	                    "type": "Point",
+	                    "coordinates": [-73.935242,40.730610]
+	                },
+	                "properties": {
+	                    "title": "THIS IS A BODEGA",
+	                    "icon": "veterinary"
+	                }
+	            }]
+	        }
+	    });
 
-	document.addEventListener("DOMContentLoaded", function locateMe() { 
-
-		if (!navigator.geolocation) {
-    		console.log("Geolocation not supported by browser");
-    		return;
-  		};
-
-		function success(position) {
-
-			var lon = position.coords.longitude;
-			var lat = position.coords.latitude;
-
-			map.flyTo({ 
-				center: [lon, lat],
-				zoom: 15
-			});
-
-
-		};
-
-		function error() {
-    		console.log("Geolocation disabled");
-  		};	
-
-		navigator.geolocation.getCurrentPosition(success, error);
+	map.addLayer({
+	    "id": "points",
+	    "type": "symbol",
+	    "source": "points",
+	    "layout": {
+	        "icon-image": "{icon}-15",
+	        "text-field": "{title}",
+	        "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+	         "text-offset": [0, 0.6],
+	         "text-anchor": "top"
+	        }
+	    });
 	});
 
-	// window.onload = locateMe();
+	// map.addSource("catData", {
+ //        type: "geojson",
+ //        data: {
+	//             "type": "FeatureCollection",
+	//             "features": [{
+	//                 "type": "Feature",
+	//                 "geometry": {
+	//                     "type": "Point",
+	//                     "coordinates": [-73.935242,40.730610]
+	//                 },
+	//                 "properties": {
+	//                     "icon": "monument"
+	//                 }
+	//             }]
+ //        }
+ //    });
+
+
+ //    map.addLayer({
+ //        "id": "catData",
+ //        "type": "symbol",
+ //        "source": "catData",
+ //       	"layout": {
+ //            "icon-image": "{icon}-15"
+ //        }
+ //    });
+
+
+	// Geolocation via https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation#Prompting_for_permission :
+
+	// document.addEventListener("DOMContentLoaded", function locateMe() { 
+
+	// 	if (!navigator.geolocation) {
+ //    		console.log("Geolocation not supported by browser");
+ //    		return;
+ //  		};
+
+	// 	function success(position) {
+
+	// 		var lon = position.coords.longitude;
+	// 		var lat = position.coords.latitude;
+
+	// 		map.flyTo({ 
+	// 			center: [lon, lat],
+	// 			zoom: 15
+	// 		});
+
+
+	// 	};
+
+	// 	function error() {
+ //    		console.log("Geolocation disabled");
+ //  		};	
+
+	// 	navigator.geolocation.getCurrentPosition(success, error);
+	// });
 
 </script>
