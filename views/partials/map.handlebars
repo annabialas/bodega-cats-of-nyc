@@ -17,7 +17,7 @@
 	map.addControl(new mapboxgl.Geocoder());
 	map.addControl(new mapboxgl.NavigationControl());
 
-	map.on('style.load', function () {
+	map.on('load', function () {
 	    // map.addSource("points", {
 	    //     "type": "geojson",
 	    //     "data": {
@@ -33,7 +33,7 @@
 	    // });
 		map.addSource("points", {
 			"type": "geojson",
-			"data": "http://54.205.42.40:8080/about"
+			"data": "./api"
 		});
 
 		map.addLayer({

@@ -8,8 +8,8 @@ router.get('/', function(req, res){
 	res.render('index');
 });
 
-router.get('/about', function(req, res){
-	res.locals.title = 'Bodega Cats | About';
+router.get('/api', function(req, res){
+	res.locals.title = 'Bodega Cats | API';
 	// res.render('about');
 
   	Cat.find({}, function(err, data) {
@@ -19,7 +19,7 @@ router.get('/about', function(req, res){
 	     		"features": data.map(function(item) {
 		        	return {
 		          		"type" : "Feature",
-		          		"geometry" : {"coordinates" : item.geometry.coordinates, "type": "Point"}
+		          		"geometry" : {"type": "Point", "coordinates" : item.geometry.coordinates}
 		        	}
 	     		})
 	  	}

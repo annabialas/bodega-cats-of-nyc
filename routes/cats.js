@@ -37,7 +37,7 @@ router.post('/', function(req, res){
 			return res.send('error!');
 		}
 		// res.send('saved ' + data.geometry.coordinates);
-		res.redirect(303, '/about');
+		res.redirect(303, '/api');
 		console.log(data); 
   	});
 
