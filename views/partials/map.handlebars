@@ -9,7 +9,7 @@
 	mapboxgl.accessToken = 'pk.eyJ1IjoiYW5uYWJpYWxhcyIsImEiOiJjaWh3bzVybjUwMm92dGZraHFwcnY4bG16In0.j2Sl8c2UoLY_yHBjO1vAfQ';
 		var map = new mapboxgl.Map({
 		    container: 'js-map',
-		    style: 'mapbox://styles/mapbox/streets-v9',
+		    style: 'mapbox://styles/mapbox/light-v9',
 		    center: [-73.985, 40.745],
 		    zoom: 12
 		});
@@ -18,19 +18,6 @@
 	map.addControl(new mapboxgl.NavigationControl());
 
 	map.on('load', function () {
-	    // map.addSource("points", {
-	    //     "type": "geojson",
-	    //     "data": {
-	    //         "type": "FeatureCollection",
-	    //         "features": [{
-	    //             "type": "Feature",
-	    //             "geometry": {
-	    //                 "type": "Point",
-	    //                 "coordinates": [-73.935242,40.730610]
-	    //             }
-	    //         }]
-	    //     }
-	    // });
 		map.addSource("points", {
 			"type": "geojson",
 			"data": "./api"
@@ -45,34 +32,6 @@
 		        }
 		    });
 	});
-
-	// map.addSource("catData", {
- //        type: "geojson",
- //        data: {
-	//             "type": "FeatureCollection",
-	//             "features": [{
-	//                 "type": "Feature",
-	//                 "geometry": {
-	//                     "type": "Point",
-	//                     "coordinates": [-73.935242,40.730610]
-	//                 },
-	//                 "properties": {
-	//                     "icon": "monument"
-	//                 }
-	//             }]
- //        }
- //    });
-
-
- //    map.addLayer({
- //        "id": "catData",
- //        "type": "symbol",
- //        "source": "catData",
- //       	"layout": {
- //            "icon-image": "{icon}-15"
- //        }
- //    });
-
 
 	// Geolocation via https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation#Prompting_for_permission :
 
