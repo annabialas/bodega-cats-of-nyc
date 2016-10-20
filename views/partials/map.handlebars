@@ -17,37 +17,33 @@
 	map.addControl(new mapboxgl.Geocoder());
 	map.addControl(new mapboxgl.NavigationControl());
 
-	map.on('load', function () {
-	    map.addSource("points", {
-	        "type": "geojson",
-	        "data": {
-	            "type": "FeatureCollection",
-	            "features": [{
-	                "type": "Feature",
-	                "geometry": {
-	                    "type": "Point",
-	                    "coordinates": [-73.935242,40.730610]
-	                },
-	                "properties": {
-	                    "title": "THIS IS A BODEGA",
-	                    "icon": "veterinary"
-	                }
-	            }]
-	        }
-	    });
+	map.on('style.load', function () {
+	    // map.addSource("points", {
+	    //     "type": "geojson",
+	    //     "data": {
+	    //         "type": "FeatureCollection",
+	    //         "features": [{
+	    //             "type": "Feature",
+	    //             "geometry": {
+	    //                 "type": "Point",
+	    //                 "coordinates": [-73.935242,40.730610]
+	    //             }
+	    //         }]
+	    //     }
+	    // });
+		map.addSource("points", {
+			"type": "geojson",
+			"data": "http://54.205.42.40:8080/about"
+		});
 
-	map.addLayer({
-	    "id": "points",
-	    "type": "symbol",
-	    "source": "points",
-	    "layout": {
-	        "icon-image": "{icon}-15",
-	        "text-field": "{title}",
-	        "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
-	         "text-offset": [0, 0.6],
-	         "text-anchor": "top"
-	        }
-	    });
+		map.addLayer({
+		    "id": "points",
+		    "type": "symbol",
+		    "source": "points",
+		    "layout": {
+		        "icon-image": "veterinary-15"
+		        }
+		    });
 	});
 
 	// map.addSource("catData", {
