@@ -6,6 +6,7 @@
 
 <script>
 
+	// Set up map
 	mapboxgl.accessToken = 'pk.eyJ1IjoiYW5uYWJpYWxhcyIsImEiOiJjaWh3bzVybjUwMm92dGZraHFwcnY4bG16In0.j2Sl8c2UoLY_yHBjO1vAfQ';
 		var map = new mapboxgl.Map({
 		    container: 'js-map',
@@ -14,26 +15,55 @@
 		    zoom: 12
 		});
 
-	map.addControl(new mapboxgl.Geocoder());
+	// Add Geocoder to map
+	var geocoder = new mapboxgl.Geocoder();
+	map.addControl(geocoder);
+	// Add more controls (navigation, geolocation):
 	map.addControl(new mapboxgl.NavigationControl());
+	map.addControl(new mapboxgl.GeolocateControl({position: 'bottom-left'}));
+	// Disable zoom on scroll
+	map.scrollZoom.disable();
 
 	map.on('load', function () {
-		map.addSource("points", {
+		// Fetch bodega data
+		map.addSource("bodegas", {
 			"type": "geojson",
 			"data": "./api"
 		});
-
+		// Add bodegas to map
 		map.addLayer({
-		    "id": "points",
-		    "type": "symbol",
-		    "source": "points",
-		    "layout": {
+		    "id": "bodegas",
+		    "type": "circle",
+		    "source": "bodegas",
+		    "paint": {
+	            "circle-radius": 5,
+	            "circle-color": "#664228"
+	        }
+		});
+		// GeoJSON schema for Geocoder query
+		map.addSource('single-point', {
+	        "type": "geojson",
+	        "data": {
+	            "type": "FeatureCollection",
+	            "features": []
+	        }
+    	});
+		// Set point after Geocoder result 
+		map.addLayer({
+	        "id": "point",
+	        "source": "single-point",
+	        "type": "symbol",
+	        "layout": {
 		        "icon-image": "veterinary-15"
-		        }
-		    });
+		    }
+    	});
+		// Display marker for Geocoder result
+    	geocoder.on('result', function(ev) {
+        	map.getSource('single-point').setData(ev.result.geometry);
+    	});
 	});
 
-	// Geolocation via https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation#Prompting_for_permission :
+	// Geolocation via https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation#Prompting_for_permission : -- WORKS ONLY WITH HTTPS
 
 	// document.addEventListener("DOMContentLoaded", function locateMe() { 
 
