@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var https = require('https');
 
 var Cat = require('../models/cat');
 
@@ -8,41 +9,78 @@ router.get('/', function(req, res){
 	res.render('submit');
 });
 
-// router.post('/', function(req, res){
-// 	var cat = new Cat({
-// 		name: req.body.name
-// 	});
 
-// 	cat.save(function(err, data){
-// 		if (err){
-// 			return res.send('error!');
-// 			// return res.redirect(303, '/pets');
-// 		}
-// 		res.send('saved ' + data.name);
-// 		// res.redirect(303, '/pets');
-// 	});
-// });
 
 router.post('/', function(req, res){
 
-  var cat = new Cat({
-      address: req.body.address,
-      zip: req.body.zip,
-      city: req.body.city
-    });
+    var publicKey = ".json?access_token=pk.eyJ1IjoiYW5uYWJpYWxhcyIsImEiOiJjaWh3bzVybjUwMm92dGZraHFwcnY4bG16In0.j2Sl8c2UoLY_yHBjO1vAfQ";
 
-    cat.save(function (err, data) { 
-      if (err){
-        console.log(err);
-      return res.send('error!');
+    var myPath = '/geocoding/v5/mapbox.places/' + req.body.address + '%20' + req.body.zip + '%20' + req.body.city + '%20' + 'NY' + publicKey;
+
+    console.log(myPath);
+
+      // Server side GET request via https://nodejs.org/api/https.html#https_https_request_options_callback:
+
+    var options = {
+        host: 'api.mapbox.com',
+        path: myPath,
+        method: 'GET'
+    };
+
+    callback = function(response) {
+      var str = '';
+
+      //another chunk of data has been recieved, so append it to `str`
+      response.on('data', function (chunk) {
+        str += chunk;
+      });
+
+      //the whole response has been received, so we just print it out here
+      response.on('end', function () {
+        // console.log(str);
+          var JSONify = JSON.parse(str);
+          var coordinates = JSONify.features[0].geometry.coordinates
+
+          var cat = new Cat({
+              geometry: {
+                coordinates: coordinates
+              }
+          });
+
+
+          cat.save(function (err, data) { 
+              if (err){
+                console.log(err);
+              return res.send('error!');
+            }
+            res.send('saved ' + data);
+            // res.redirect(303, '/api');
+            // console.log(data); 
+          });
+      });
+
     }
-    res.send('saved ' + data);
-    // res.redirect(303, '/api');
-    // console.log(data); 
-    });
+
+    https.request(options, callback).end();
+
+});
+
+
+
+
+
+
+    // cat.save(function (err, data) { 
+    //   if (err){
+    //     console.log(err);
+    //   return res.send('error!');
+    // }
+    // res.send('saved ' + data);
+    // // res.redirect(303, '/api');
+    // // console.log(data); 
+    // });
 
     // res.redirect('/');
-});
 
 
 
