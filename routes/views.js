@@ -23,6 +23,8 @@ router.get('/api', function(req, res){
 
   		console.log(myPath);
 
+  		// Server side GET request via https://nodejs.org/api/https.html#https_https_request_options_callback:s
+
   		var options = {
   			host: 'api.mapbox.com',
   			path: myPath,
@@ -37,7 +39,7 @@ router.get('/api', function(req, res){
 				str += chunk;
 			});
 
-			//the whole response has been recieved, so we just print it out here
+			//the whole response has been received, so we just print it out here
 			response.on('end', function () {
 				console.log(str);
 				// formatGeoJson(str);
