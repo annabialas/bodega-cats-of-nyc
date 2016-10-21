@@ -25,24 +25,25 @@ router.get('/', function(req, res){
 
 router.post('/', function(req, res){
 
-	var cat = new Cat({
-    	geometry: { 
-    		coordinates:req.body.coordinates.split(',').map(Number) 
-    	}
-  	});
+  var cat = new Cat({
+      address: req.body.address,
+      zip: req.body.zip,
+      city: req.body.city
+    });
 
-  	cat.save(function (err, data) { 
-  		if (err){
-  			console.log(err);
-			return res.send('error!');
-		}
-		// res.send('saved ' + data.geometry.coordinates);
-		res.redirect(303, '/api');
-		console.log(data); 
-  	});
+    cat.save(function (err, data) { 
+      if (err){
+        console.log(err);
+      return res.send('error!');
+    }
+    res.send('saved ' + data);
+    // res.redirect(303, '/api');
+    // console.log(data); 
+    });
 
-  	// res.redirect('/');
+    // res.redirect('/');
 });
+
 
 
 // router.get('/', function(req, res){

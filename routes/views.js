@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+var https = require('https');
+
 var Cat = require('../models/cat');
 
 router.get('/', function(req, res){
@@ -13,30 +15,56 @@ router.get('/api', function(req, res){
 	// res.render('about');
 
   	Cat.find({}, function(err, data) {
+  		// console.log(data);
 
-	  	var geojson = {
-	    	"type": "FeatureCollection",
-	     		"features": data.map(function(item) {
-		        	return {
-		          		"type" : "Feature",
-		          		"geometry" : {"type": "Point", "coordinates" : item.geometry.coordinates}
-		        	}
-	     		})
-	  	}
-	  	
-  		res.json(geojson);
+  		var publicKey = ".json?access_token=pk.eyJ1IjoiYW5uYWJpYWxhcyIsImEiOiJjaWh3bzVybjUwMm92dGZraHFwcnY4bG16In0.j2Sl8c2UoLY_yHBjO1vAfQ";
+
+  		var myPath = '/geocoding/v5/mapbox.places/' + data[0]['address'] + '%20' + data[0]['zip'] + '%20' + data[0]['city'] + '%20' + 'NY' + publicKey;
+
+  		console.log(myPath);
+
+  		var options = {
+  			host: 'api.mapbox.com',
+  			path: myPath,
+  			method: 'GET'
+  		};
+
+		callback = function(response) {
+			var str = '';
+
+			//another chunk of data has been recieved, so append it to `str`
+			response.on('data', function (chunk) {
+				str += chunk;
+			});
+
+			//the whole response has been recieved, so we just print it out here
+			response.on('end', function () {
+				console.log(str);
+				// formatGeoJson(str);
+				var JSONify = JSON.parse(str);
+				res.json(JSONify);
+			});
+
+
+		}
+
+		https.request(options, callback).end();
+
+		// var formatGeoJson = function(str) {
+
+		// }
+
+	  	// var geojson = {
+	   //  	"type": "FeatureCollection",
+	   //   		"features": data.map(function(item) {
+		  //       	return {
+		  //         		"type" : "Feature",
+		  //         		"geometry" : {"type": "Point", "coordinates" : item.geometry.coordinates}
+		  //       	}
+	   //   		})
+	  	// }
   	});
 });
-
-// router.get('/about', function(req, res){
-// 	res.locals.title = 'Bodega Cats | About';
-// 	res.render('about');
-// });
-
-// router.get('/submit', function(req, res){
-// 	res.locals.title = 'Bodega Cats | Submit A Cat';
-// 	res.render('submit');
-// });
 
 module.exports = router;
 
