@@ -3,12 +3,12 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var catSchema = new Schema({
-	// name: String
-	// properties: {
-	//     bodegaName:       { type: String, required: true },
-	//     felineName: { type: String, required: false },
-	//     borough:        { type: String, required: true }
-	// },
+	properties: {
+	    bodega: String,
+	    address: String,
+	    zip: Number,
+	    city: String
+	},
   	geometry: {
   		type: { type: String, default: 'Point' }, 
 		coordinates: { type: [Number], index: '2dsphere'}

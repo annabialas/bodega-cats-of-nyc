@@ -13,11 +13,14 @@ router.get('/', function(req, res){
 
 router.post('/', function(req, res){
 
+    var address = req.body.address.replace(/ /g,"%20");
+    console.log(address);
+    var zip = req.body.zip;
+    var city = req.body.city.replace(/ /g,"%20");
+
     var publicKey = ".json?access_token=pk.eyJ1IjoiYW5uYWJpYWxhcyIsImEiOiJjaWh3bzVybjUwMm92dGZraHFwcnY4bG16In0.j2Sl8c2UoLY_yHBjO1vAfQ";
 
-    var myPath = '/geocoding/v5/mapbox.places/' + req.body.address + '%20' + req.body.zip + '%20' + req.body.city + '%20' + 'NY' + publicKey;
-
-    console.log(myPath);
+    var myPath = '/geocoding/v5/mapbox.places/' + address + '%20' + zip+ '%20' + city + '%20' + 'NY' + publicKey;
 
       // Server side GET request via https://nodejs.org/api/https.html#https_https_request_options_callback:
 
@@ -37,11 +40,16 @@ router.post('/', function(req, res){
 
       //the whole response has been received, so we just print it out here
       response.on('end', function () {
-        // console.log(str);
           var JSONify = JSON.parse(str);
           var coordinates = JSONify.features[0].geometry.coordinates
 
           var cat = new Cat({
+              properties: {
+                bodega: req.body.bodega,
+                address: req.body.address,
+                zip: req.body.zip,
+                city: req.body.city
+              },
               geometry: {
                 coordinates: coordinates
               }

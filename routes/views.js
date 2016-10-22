@@ -21,7 +21,16 @@ router.get('/api', function(req, res){
 	     		"features": data.map(function(item) {
 		        	return {
 		          		"type" : "Feature",
-		          		"geometry" : {"type": "Point", "coordinates" : item.geometry.coordinates}
+		          		"properties": { 
+		          			"bodega": item.properties.bodega,
+		          			"address": item.properties.address,
+		          			"zip": item.properties.zip,
+		          			"city": item.properties.city
+		          		},
+		          		"geometry" : {
+		          			"type": "Point", 
+		          			"coordinates" : item.geometry.coordinates
+		          		}
 		        	}
 	     		})
 	  	}
