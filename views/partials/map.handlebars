@@ -36,8 +36,20 @@
 		    "type": "circle",
 		    "source": "bodegas",
 		    "paint": {
-	            "circle-radius": 5,
-	            "circle-color": "#664228"
+	            "circle-radius": 6,
+	            // Set circle's color according to its location
+	            "circle-color": {
+    				property: 'city',
+    				type: 'categorical',
+				    stops: [
+				        ['New York', 'red'],
+				        ['Brooklyn', 'green'],
+				        ['Queens', 'blue'],
+				        ['Bronx', 'yellow'],
+				        ['Staten Island', 'black']
+				    ]
+				},
+	            "circle-opacity": 0.7
 	        }
 		});
 		// GeoJSON schema for Geocoder query
@@ -63,7 +75,34 @@
     	});
 	});
 
-	// Geolocation via https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation#Prompting_for_permission : -- WORKS ONLY WITH HTTPS
+	// Popups via https://www.mapbox.com/mapbox-gl-js/example/popup-on-click/
+
+	map.on('click', function (e) {
+    	var features = map.queryRenderedFeatures(e.point, { layers: ['bodegas'] });
+
+	    if (!features.length) {
+	        return;
+	    }
+
+    	var feature = features[0];
+
+	    // Populate the popup and set its coordinates
+	    // based on the feature found.
+	    var popup = new mapboxgl.Popup({closeOnClick: true})
+	        .setLngLat(feature.geometry.coordinates)
+	        .setHTML('<div class="popup"><p class="popup__title">' + feature.properties.bodega + '</p><p class="popup__text">' + feature.properties.address + '</p><p class="popup__text">' + feature.properties.city + ', NY ' + feature.properties.zip + '</p></div>')
+	        .addTo(map);
+	});
+
+	// Use the same approach as above to indicate that the symbols are clickable
+	// by changing the cursor style to 'pointer'.
+	map.on('mousemove', function (e) {
+	    var features = map.queryRenderedFeatures(e.point, { layers: ['bodegas'] });
+	    map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
+	});
+
+
+	// Geolocation via https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation#Prompting_for_permission : -- WORKS ONLY WITH HTTPS THEREFORE NOT ON AWS
 
 	// document.addEventListener("DOMContentLoaded", function locateMe() { 
 

@@ -108,59 +108,19 @@ hr {
   padding: 0;
   height: 100%; }
 
-input[type="text"], input[type="number"] {
-  border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.8); }
+.mapboxgl-popup {
+  max-width: 400px; }
 
-input:focus,
-button:focus {
-  outline: none; }
+.mapboxgl-popup-content .mapboxgl-popup-close-button {
+  padding: 5px; }
 
-input[type="text"], input[type="number"] {
-  text-align: left;
-  border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.8);
-  background-color: transparent;
-  box-shadow: none;
-  width: 100%;
-  padding: 10px 15px;
-  margin-bottom: 15px;
-  transition: all .4s ease;
-  -webkit-transition: all .4s ease; }
-
-input[type="text"]:focus, input[type="number"]:focus {
-  text-align: left;
-  border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.7);
-  background-color: transparent;
-  box-shadow: none;
-  width: 100%;
-  padding: 10px 15px;
-  margin-bottom: 15px;
-  transition: all .4s ease;
-  -webkit-transition: all .4s ease; }
-
-form,
-.form {
-  padding: 10px 0;
-  /* Firefox 18- */
-  /* Firefox 19+ */ }
-  form ::-webkit-input-placeholder,
-  .form ::-webkit-input-placeholder {
-    color: rgba(0, 0, 0, 0.5);
-    text-align: left; }
-  form :-moz-placeholder,
-  .form :-moz-placeholder {
-    color: rgba(0, 0, 0, 0.5);
-    text-align: left; }
-  form ::-moz-placeholder,
-  .form ::-moz-placeholder {
-    color: rgba(0, 0, 0, 0.5);
-    text-align: left; }
-  form :-ms-input-placeholder,
-  .form :-ms-input-placeholder {
-    color: rgba(0, 0, 0, 0.5);
-    text-align: left; }
+.mapboxgl-popup-content .popup {
+  margin: 0px 10px 0px 10px; }
+  .mapboxgl-popup-content .popup .popup__title {
+    margin: 0px 0px 8px 0px;
+    font-weight: 600; }
+  .mapboxgl-popup-content .popup .popup__text {
+    margin: 0px; }
 
 .form-title {
   text-align: center; }
