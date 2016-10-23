@@ -116,14 +116,49 @@ hr {
 
 .mapboxgl-popup-content .popup {
   margin: 0px 10px 0px 10px; }
-  .mapboxgl-popup-content .popup .popup__title {
+  .mapboxgl-popup-content .popup__title {
     margin: 0px 0px 8px 0px;
     font-weight: 600; }
-  .mapboxgl-popup-content .popup .popup__text {
+  .mapboxgl-popup-content .popup__text {
     margin: 0px; }
 
+form,
+.form {
+  padding: 10px 0; }
+  form input,
+  .form input {
+    box-shadow: none; }
+  form select:focus,
+  .form select:focus {
+    outline: none;
+    border: 1px solid #8a8a8a;
+    background-color: #fefefe;
+    box-shadow: 0 0 5px #cacaca;
+    transition: box-shadow .5s,border-color .25s ease-in-out; }
+  form option:disabled,
+  .form option:disabled {
+    color: rgba(0, 0, 0, 0.5); }
+  form ::-webkit-input-placeholder,
+  .form ::-webkit-input-placeholder {
+    color: rgba(0, 0, 0, 0.5);
+    text-align: left; }
+  form input[type=submit],
+  .form input[type=submit] {
+    height: 37px;
+    padding: 8px 32px 8px 32px;
+    background-color: #333;
+    color: #fefefe;
+    border-style: solid;
+    border-width: 1px; }
+
 .form-title {
-  text-align: center; }
+  text-align: center;
+  margin-bottom: 1em; }
 
 .form-description {
   text-align: center; }
+
+.confirm {
+  text-align: center; }
+  .confirm__title {
+    margin-bottom: 1em; }

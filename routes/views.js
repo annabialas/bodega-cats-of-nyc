@@ -10,13 +10,23 @@ router.get('/', function(req, res){
 	res.render('index');
 });
 
+router.get('/confirm', function(req, res){
+	res.locals.title = 'Bodega Cats';
+	res.render('confirm');
+});
+
 router.get('/api', function(req, res){
 	res.locals.title = 'Bodega Cats | API';
-	// res.render('about');
 
-  	Cat.find({}, function(err, data) {
+	// var query = {};
 
-	  	var geojson = {
+	// if (req.query.city) {
+	// 	query = {city: req.query.city};
+	// };
+
+	Cat.find({}, function(err, data){
+
+		var geojson = {
 	    	"type": "FeatureCollection",
 	     		"features": data.map(function(item) {
 		        	return {
@@ -34,8 +44,33 @@ router.get('/api', function(req, res){
 		        	}
 	     		})
 	  	}
-	  	res.json(geojson);
-  	});
+
+		res.json(geojson);
+	});
+
+  	// Cat.find({}, function(err, data) {
+
+	  // 	var geojson = {
+	  //   	"type": "FeatureCollection",
+	  //    		"features": data.map(function(item) {
+		 //        	return {
+		 //          		"type" : "Feature",
+		 //          		"properties": { 
+		 //          			"bodega": item.properties.bodega,
+		 //          			"address": item.properties.address,
+		 //          			"zip": item.properties.zip,
+		 //          			"city": item.properties.city
+		 //          		},
+		 //          		"geometry" : {
+		 //          			"type": "Point", 
+		 //          			"coordinates" : item.geometry.coordinates
+		 //          		}
+		 //        	}
+	  //    		})
+	  // 	}
+
+	  // 	res.json(geojson);
+  	// });
 });
 
 module.exports = router;

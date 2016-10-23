@@ -61,9 +61,8 @@ router.post('/', function(req, res){
                 console.log(err);
               return res.send('error!');
             }
-            res.send('saved ' + data);
-            // res.redirect(303, '/api');
-            // console.log(data); 
+            res.redirect(303, '/confirm');
+            console.log(data); 
           });
       });
 
