@@ -25,5 +25,8 @@
 		text-align: right;
 		line-height: $top-nav-height;
 		vertical-align: middle;
+
+		a { color: $blue; @include transition;}
+		a:hover { color: $blue-40k; @include transition;}
 	}
 }

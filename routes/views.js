@@ -10,9 +10,20 @@ router.get('/', function(req, res){
 	res.render('index');
 });
 
+router.get('/error', function(req, res){
+	res.locals.title = 'Bodega Cats | Error';
+	res.render('error');
+});
+
 router.get('/confirm', function(req, res){
-	res.locals.title = 'Bodega Cats';
-	res.render('confirm');
+	res.locals.title = 'Bodega Cats | Cofirmation';
+	Cat.find({}, function(err, data){
+		var catData = {
+			cats: data
+		};
+
+		res.render('confirm', catData);
+	});
 });
 
 router.get('/api', function(req, res){

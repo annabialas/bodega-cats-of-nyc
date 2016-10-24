@@ -36,14 +36,14 @@ a {
 // Setting Font Sizes for Headers
 
 h1 {
-	// font-family: $secondary-font;
+	font-family: $main-font;
     font-size: 2rem;
     font-weight: 400;
     margin: 0;
 }
 
 h2 {
-	// font-family: $secondary-font;
+	font-family: $main-font;
     font-size: 1.6rem;
     font-weight: 400;
     text-transform: uppercase;
@@ -51,7 +51,7 @@ h2 {
 }
 
 h3 {
-	// font-family: $secondary-font;
+	font-family: $main-font;
     font-size: 1.4rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -59,7 +59,7 @@ h3 {
 }
 
 h4 {
-	// font-family: $secondary-font;
+	font-family: $main-font;
     font-size: 1.2rem;
     font-weight: 400;
     text-transform: uppercase;
@@ -67,7 +67,7 @@ h4 {
 }
 
 h5 {
-	// font-family: $secondary-font;
+	font-family: $main-font;
     font-size: 1rem;
     font-weight: 500;
     text-transform: capitalize;
@@ -75,7 +75,7 @@ h5 {
 }
 
 h6 {
-	// font-family: $secondary-font;
+	font-family: $main-font;
     font-size: 1rem;
     font-weight: 400;
     text-transform: capitalize;

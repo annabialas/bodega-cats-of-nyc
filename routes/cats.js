@@ -59,9 +59,9 @@ router.post('/', function(req, res){
           cat.save(function (err, data) { 
               if (err){
                 console.log(err);
-              return res.send('error!');
+              return res.redirect(303, 'error');
             }
-            res.redirect(303, '/confirm');
+            res.redirect(303, 'confirm');
             console.log(data); 
           });
       });
@@ -71,24 +71,6 @@ router.post('/', function(req, res){
     https.request(options, callback).end();
 
 });
-
-
-
-
-
-
-    // cat.save(function (err, data) { 
-    //   if (err){
-    //     console.log(err);
-    //   return res.send('error!');
-    // }
-    // res.send('saved ' + data);
-    // // res.redirect(303, '/api');
-    // // console.log(data); 
-    // });
-
-    // res.redirect('/');
-
 
 
 // router.get('/', function(req, res){

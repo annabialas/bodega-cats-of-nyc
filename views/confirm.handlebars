@@ -2,8 +2,18 @@
 <div class="row">
 	<div class="small-11 small-centered medium-6 medium-offset-3 large-6 large-offset-3 columns confirm">
 	<h3 class="confirm__title">Submission successful</h3>
-	<p class="confirm__description">You did it! </p>
-	<a href="./index" class="confirm__back">Go To Map</a>
+	<p>You submitted an entry for:</p>
+	<div class="confirm__description">
+	{{#each cats}}
+		{{#if @last}}
+		<p><b>{{properties.bodega}}</b></p>
+		<p>{{properties.address}}<br>
+		{{properties.city}}, NY {{properties.zip}}</p>
+		{{/if}}
+	{{/each}}
+	</div>
+	<em><a href="./" class="confirm__back">Check Your Bodega Out on the Map</a><br>or<br>
+	<a href="./submit" class="confirm_back">Submit Another One!</a></em>
 	</div>
 </div>
 </div>

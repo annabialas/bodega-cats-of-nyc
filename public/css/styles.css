@@ -39,35 +39,41 @@ a {
     color: currentColor; }
 
 h1 {
+  font-family: "Roboto", sans-serif;
   font-size: 2rem;
   font-weight: 400;
   margin: 0; }
 
 h2 {
+  font-family: "Roboto", sans-serif;
   font-size: 1.6rem;
   font-weight: 400;
   text-transform: uppercase;
   margin: 0; }
 
 h3 {
+  font-family: "Roboto", sans-serif;
   font-size: 1.4rem;
   font-weight: 700;
   text-transform: uppercase;
   margin: 0; }
 
 h4 {
+  font-family: "Roboto", sans-serif;
   font-size: 1.2rem;
   font-weight: 400;
   text-transform: uppercase;
   margin: 0; }
 
 h5 {
+  font-family: "Roboto", sans-serif;
   font-size: 1rem;
   font-weight: 500;
   text-transform: capitalize;
   margin: 0; }
 
 h6 {
+  font-family: "Roboto", sans-serif;
   font-size: 1rem;
   font-weight: 400;
   text-transform: capitalize;
@@ -92,6 +98,14 @@ hr {
     text-align: right;
     line-height: 50px;
     vertical-align: middle; }
+    .top-nav__menu-item a {
+      color: #0000FF;
+      transition: all .4s ease;
+      -webkit-transition: all .4s ease; }
+    .top-nav__menu-item a:hover {
+      color: #0000e0;
+      transition: all .4s ease;
+      -webkit-transition: all .4s ease; }
 
 .map {
   position: absolute;
@@ -108,19 +122,27 @@ hr {
   padding: 0;
   height: 100%; }
 
+.mapboxgl-ctrl-geocoder {
+  font-family: "Roboto", sans-serif, sans-serif; }
+
+.mapboxgl-ctrl-attrib {
+  font-family: "Roboto", sans-serif, sans-serif; }
+
 .mapboxgl-popup {
   max-width: 400px; }
 
-.mapboxgl-popup-content .mapboxgl-popup-close-button {
-  padding: 5px; }
-
-.mapboxgl-popup-content .popup {
-  margin: 0px 10px 0px 10px; }
-  .mapboxgl-popup-content .popup__title {
-    margin: 0px 0px 8px 0px;
-    font-weight: 600; }
-  .mapboxgl-popup-content .popup__text {
-    margin: 0px; }
+.mapboxgl-popup-content {
+  font-family: "Roboto", sans-serif, sans-serif; }
+  .mapboxgl-popup-content .mapboxgl-popup-close-button {
+    padding: 5px; }
+  .mapboxgl-popup-content .popup {
+    font-family: "Roboto", sans-serif, sans-serif;
+    margin: 0px 10px 0px 10px; }
+    .mapboxgl-popup-content .popup__title {
+      margin: 0px 0px 8px 0px;
+      font-weight: 600; }
+    .mapboxgl-popup-content .popup__text {
+      margin: 0px; }
 
 form,
 .form {
@@ -150,6 +172,22 @@ form,
     color: #fefefe;
     border-style: solid;
     border-width: 1px; }
+  form input[type=submit]:hover,
+  .form input[type=submit]:hover {
+    background-color: #0000FF;
+    transition: all .4s ease;
+    -webkit-transition: all .4s ease; }
+  form input[type=submit]:active,
+  .form input[type=submit]:active {
+    background-color: #0000e0;
+    transition: all .4s ease;
+    -webkit-transition: all .4s ease; }
+  form input[type=submit]:focus,
+  .form input[type=submit]:focus {
+    background-color: #0000FF;
+    outline: none;
+    transition: all .4s ease;
+    -webkit-transition: all .4s ease; }
 
 .form-title {
   text-align: center;
@@ -162,3 +200,30 @@ form,
   text-align: center; }
   .confirm__title {
     margin-bottom: 1em; }
+  .confirm__description {
+    margin-bottom: 3em; }
+  .confirm a {
+    color: #0000FF;
+    font-weight: 600;
+    transition: all .4s ease;
+    -webkit-transition: all .4s ease; }
+  .confirm a:hover {
+    color: #0000e0;
+    transition: all .4s ease;
+    -webkit-transition: all .4s ease; }
+
+.error {
+  text-align: center; }
+  .error__title {
+    margin-bottom: 1em; }
+  .error__description {
+    margin-bottom: 3em; }
+  .error a {
+    color: #0000FF;
+    font-weight: 600;
+    transition: all .4s ease;
+    -webkit-transition: all .4s ease; }
+  .error a:hover {
+    color: #0000e0;
+    transition: all .4s ease;
+    -webkit-transition: all .4s ease; }

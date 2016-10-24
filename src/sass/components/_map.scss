@@ -23,6 +23,10 @@
 
 // Mapbox built-in classes in this section DO NOT adhere to BEM 
 
+.mapboxgl-ctrl-geocoder { font-family: $main-font, sans-serif; }
+
+.mapboxgl-ctrl-attrib { font-family: $main-font, sans-serif; }
+
 .mapboxgl-popup {
 
         max-width: 400px;
@@ -30,9 +34,13 @@
 
 .mapboxgl-popup-content {
 
+	font-family: $main-font, sans-serif;
+
 	.mapboxgl-popup-close-button { padding: 5px; }
 
 	.popup {
+
+		font-family: $main-font, sans-serif;
 
 		margin: 0px 10px 0px 10px; 
 

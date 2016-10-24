@@ -16,14 +16,9 @@ $top-nav-height: 50px;
 $black: #000;
 $white: #FFF;
 
-// $main-color: TBD
-// $primary-accent-color: TBD
-// $secondary-accent-color: TBD
-
-// *maybe* accent colors
-
-// $yellow: #FFF000;
-// $dark-blue: #2C2C54;
+$blue: #0000FF;
+$blue-20k: darken($blue, 4);
+$blue-40k: darken($blue, 6);
 
 // grayscale tones
 
@@ -46,11 +41,3 @@ $white-60: rgba($white, .6);
 $white-70: rgba($white, .7);
 $white-80: rgba($white, .8);
 $white-90: rgba($white, .9);
-
-// *if* they become accent colors
-
-// $yellow-20k: darken($yellow, 4);
-// $yellow-40k: darken($yellow, 6);
-
-// $dark-blue-20k: darken($dark-blue, 4);
-// $dark-blue-40k: darken($dark-blue, 6);
