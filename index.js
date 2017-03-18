@@ -3,9 +3,9 @@ var hbs = require('express-handlebars');
 var bodyParser = require('body-parser');
 var Mongoose = require('mongoose');
 
-var app = express();
-
 require('dotenv').config();
+
+var app = express();
 
 Mongoose.connect(process.env.DB_URL);
 
