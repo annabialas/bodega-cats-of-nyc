@@ -3,7 +3,7 @@ var hbs = require('express-handlebars');
 var bodyParser = require('body-parser');
 var Mongoose = require('mongoose');
 
-require('dotenv').config();
+// require('dotenv').config();
 
 var app = express();
 
