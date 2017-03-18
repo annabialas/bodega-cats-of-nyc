@@ -5,7 +5,7 @@ var Mongoose = require('mongoose');
 
 var app = express();
 
-require('dotenv').config({silent: true});
+require('dotenv').config();
 
 Mongoose.connect(process.env.DB_URL);
 
