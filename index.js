@@ -11,8 +11,8 @@ Mongoose.connect(process.env.DB_URL);
 
 var Cat = require('./models/cat');
 
-var portNum = 8080;
-app.set('port', portNum);
+var PORT = process.env.PORT || 8080;
+app.set('port', PORT);
 
 // tell express to use handlebars
 
@@ -35,6 +35,6 @@ app.use(express.static('public'));
 
 // start server
 
-app.listen(portNum, function() {
-	console.log('listening on port', portNum);
+app.listen(PORT, function() {
+	console.log('listening on port', PORT);
 });
